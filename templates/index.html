@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<title> Wordle Clone </title>
+<head>
+  <link href="../static/main.css" rel="stylesheet">
+</head>
+  <body>
+    <div class="container">
+      <h1>Wordle Clone</h1>
+          {% if not game %}
+          <h3>Press start game to begin!</h3>
+          <br/><a href="{{url_for('start_game')}}"> Start </a>
+          {% endif %}
+        </form>
+      <div class="output">
+        {% include [game] ignore missing %}
+      </div>
+  </div>
+  </body>
+</html>

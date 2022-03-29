@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<div class="download">
+<form action="{{url_for('game_guess')}}" method="POST">
+{% for item in list %}
+    <br/>
+    <nobr>
+    {% for item2 in item %}
+        {% if item2[1] == 'absent' %}
+                <table style="background-color:lightslategray;">
+                    <tr style="color:black;">
+                        <td>{{item2[0]}}</td>
+                    </tr>
+                <table>
+        {% endif %}
+        {% if item2[1] == 'correct' %}
+                <table style="background-color:lightgreen;">
+                    <tr style="color:black;">
+                        <td>{{item2[0]}}</td>
+                    </tr>
+                <table>
+        {% endif %}
+        {% if item2[1] == 'present' %}
+            <table style="background-color:lightyellow;">
+                <tr style="color:black;">
+                     <td>{{item2[0]}}</td>
+                 </tr>
+               </table>
+        {% endif %} 
+    {% endfor %}
+    </nobr>
+{% endfor %}
+<br/>
+{% if not end_text %}
+Guess: <input type="text" name="guess" method="POST"/>
+{% endif %}
+{% if end_text %}
+{{end_text|safe}}
+{% endif %}
+</div>
+</html>
